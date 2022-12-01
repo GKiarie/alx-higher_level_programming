@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-import add_0
-
+import add_0 as mod
 a = 1
 b = 2
-
-sum = add_0.add(a, b)
+sum = mod.add(a, b)
 print("{} + {} = {}".format(a, b, sum))
