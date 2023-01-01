@@ -1,0 +1,47 @@
+# 0-add_integer.txt
+
+======================
+Test for 0-add_integer.py
+=========================
+
+Simple Library with one function called ``add_integer()``.
+
+Numbers
+=======
+``add_integer()`` returns the sum of its arguments. For numbers, the value is eqivalent to using the ``+`` operator.
+
+::
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(2, 3)
+	5
+
+Function also works with floating point values.
+
+::
+	>>> add_integer(2.0, 3)
+	5
+
+Function accepts one argument only.
+
+::
+	>>> add_integer(3)
+	101
+
+Function accepts negative numbers.
+
+::
+	>>> add_integer(-1, -1)
+	-2
+
+Non-Numbers
+===========
+Function raises TypeError when given an argument that is neither an int or a float.
+
+::
+	>>> add_integer("three", 3)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(3, "three")       
+	Traceback (most recent call last):
+	TypeError: b must be an integer
