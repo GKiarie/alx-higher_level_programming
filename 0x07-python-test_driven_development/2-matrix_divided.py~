@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+def matrix_divided(matrix, div):
+    for i in matrix:
+        if type(i) not in [int, float]:
+            raise TypeError('matrix must be a matrix (list of lists) of integers/floats')
+
+    size = len(matrix)
+
+    matrix_sizes = []
+    
+    for i in range(size):
+        matrix_sizes.append(len(matrix[i - 1]))
+
+    for i in matrix_sizes:
+        if i != i + 1:
+            raise TypeError('Each row of the matrix must have the same size')
+
+    if type(div) not in [int, float]:
+        raise TypeError('div must be a number')
+    if div == 0:
+        raise ZeroDivisionError('division by zero')
+    return ([[item / div for item in subl] for subl in matrix])
+        
