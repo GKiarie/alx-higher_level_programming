@@ -1,0 +1,14 @@
+"""
+Function that copies a list
+"""
+
+def copy_list(l):
+    """
+    Returns copy of a list
+    """
+    new_l = []
+    for i in l:
+        new_l.append(i)
+    return (new_l)
+        
+
