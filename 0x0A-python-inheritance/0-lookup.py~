@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+"""python function"""
+
+def lookup(obj):
+    """
+    Ftn that returns list of available attributes & menthods
+    of an object.
+    Returns: list
+    """
+    return list(obj.__dir__)
