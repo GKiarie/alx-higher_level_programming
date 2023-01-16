@@ -1,0 +1,17 @@
+#!/bin/usr/python3
+"""Base Class"""
+
+
+class Base:
+    """
+    Base class of all other classes in this project
+    """
+    __nb_objects = 0
+
+    def __init__(self, id=None):
+        """Class constructor"""
+        if id != None:
+            self.id = id
+        else:
+            __nb_objects += 1
+            self.id = __nb_objects
