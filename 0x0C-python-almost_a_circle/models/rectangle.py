@@ -82,6 +82,6 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns rect instance string rep"""
-        return "[{}] ({}) {}/{} - {}/{}".\
-            format(type(self).__name__, self.id, self.x, self.y,
+        return "[Rectangle] ({}) {}/{} - {}/{}".\
+            format(self.id, self.x, self.y,
                    self.width, self.height)
