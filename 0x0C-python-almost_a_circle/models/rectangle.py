@@ -75,10 +75,9 @@ class Rectangle(Base):
 
     def display(self):
         """Print rectangle instance with '#'"""
-        for i in range(self.height):
-            for j in range(self.width):
-                print('#', end="")
-            print('')
+        print(("\n" * self.__y) +
+              "\n".join(((" " * self.__x) + ("#" * self.__width))
+                        for _ in range(self.__height)))
 
     def __str__(self):
         """Returns rect instance string rep"""
