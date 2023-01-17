@@ -84,3 +84,30 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".\
             format(self.id, self.x, self.y,
                    self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """Update the class Rectangle by adding the public method"""
+        for a, arg in enumerate(args):
+            if a == 0:
+                self.id = arg
+            if a == 1:
+                self.width = arg
+            if a == 2:
+                self.height = arg
+            if a == 3:
+                self.x = arg
+            if a == 4:
+                self.y = arg
+
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                if key == "width":
+                    self.width = value
+                if key == "height":
+                    self.height = value
+                if key == "x":
+                    self.x = value
+                if key == "y":
+                    self.y = value
