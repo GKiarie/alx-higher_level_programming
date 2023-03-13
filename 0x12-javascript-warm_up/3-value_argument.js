@@ -1,9 +1,7 @@
 #!/usr/bin/node
 
-const size = process.argv.length;
-
-if (size <= 2) {
+if (!process.argv[2]) {
   console.log('No argument');
-} else if (size >= 3) {
+} else {
   console.log(process.argv[2]);
 }
