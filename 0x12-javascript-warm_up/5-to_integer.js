@@ -6,7 +6,7 @@ let firstArg = process.argv[2];
 if (size >= 3) {
   if (!isNaN(firstArg)) {
     firstArg = parseInt(firstArg);
-    console.log(`my number: ${firstArg}`);
+    console.log(`My number: ${firstArg}`);
   } else {
     console.log('Not a number');
   }
