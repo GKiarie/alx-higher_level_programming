@@ -1,11 +1,27 @@
-#!/usr/bin/env python3
-"""Script that lists all entries from
-a table is a database"""
+#!/usr/bin/python3
+""" selecting with mysqldb """
 import MySQLdb
-from sys import argv
+import sys
+
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states")
-    [print(state) for state in cur.fetchall()]
+    try:
+        connection = MySQLdb.connect(
+            host="localhost",
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            port=3306,
+            db=sys.argv[3]
+        )
+    except MySQLdb.Error:
+        print("error connecting")
+    cur = connection.cursor()
+    try:
+        cur.execute("SELECT * FROM states ORDER BY states.id")
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
+    except MySQLdb.Error:
+        print("execution failed")
+    cur.close()
+    connection.close()
