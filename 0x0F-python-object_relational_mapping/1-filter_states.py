@@ -5,7 +5,21 @@ import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+    try:
+        db = MySQLdb.connect(
+          host='localhost',
+          user=argv[1],
+          passwd=argv[2],
+          db=argv[3])
+    except MySQLdb.Error:
+        print("Failed to connect")
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
-    [print(state) for state in cur.fetchall()]
+    try:
+        cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
+    except MySQLdb.Error:
+        print("Failed to execute query")
+    cur.close()
+    db.close()
