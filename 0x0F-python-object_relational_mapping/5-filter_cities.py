@@ -21,10 +21,7 @@ if __name__ == "__main__":
  ON cities.state_id = states.id WHERE states.name = %s ORDER\
  BY cities.id", (sys.argv[4],))
         rows = cur.fetchall()
-        if rows:
-            print(f"{rows[0][0]}, {rows[1][0]}, {rows[2][0]}")
-        else:
-            print("")
+        print(", ".join([row[0] for row in rows]))
     except MySQLdb.Error:
         print("execution failed")
     cur.close()
