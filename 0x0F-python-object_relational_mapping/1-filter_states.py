@@ -1,28 +1,24 @@
 #!/usr/bin/python3
-""" selecting with mysqldb """
+""" Lists all states with a name starting with N """
 import MySQLdb
-import sys
+from sys import argv
 
 
-if __name__ == "__main__":
-    try:
-        connection = MySQLdb.connect(
-            host="localhost",
-            user=sys.argv[1],
-            passwd=sys.argv[2],
-            port=3306,
-            db=sys.argv[3]
-        )
-    except MySQLdb.Error:
-        print("error connecting")
-    cur = connection.cursor()
-    try:
-        cur.execute("SELECT * FROM states WHERE name\
- LIKE 'N%' ORDER BY states.id")
-        rows = cur.fetchall()
-        for row in rows:
-            print(row)
-    except MySQLdb.Error:
-        print("execution failed")
-    cur.close()
-    connection.close()
+def connect():
+    """ Connection Data Base """
+    if len(argv) == 4:
+        conn = MySQLdb.connect(host='localhost', user=argv[1],
+                               passwd=argv[2], db=argv[3], port=3306)
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM states WHERE name LIKE 'N%'\
+                        ORDER BY states.id ASC;")
+        # Search name on the tuple
+        for row in cursor.fetchall():
+            if row[1][0] == 'N':
+                print(row)
+        # Close connection
+        conn.close()
+
+
+if __name__ == '__main__':
+    connect()
