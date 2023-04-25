@@ -90,4 +90,50 @@ try {
 
 In the above example, the divide() function checks if the second argument is zero and throws a new Error object with a custom message if it is. When the function is called with divide(10, 0), the throw statement is executed, which immediately stops the function execution and throws the error object. The catch block then handles the error and logs it to the console.
 
+============================================================================request module
+============================================================================The request module in JavaScript is a popular module used for making HTTP requests in Node.js. It provides an easy-to-use API for making HTTP requests, handling cookies, following redirects, and more.
+To use the request module, you first need to install it using npm. You can do this by running the following command in your terminal:
+
+npm install request
+
+Once you have installed the request module, you can use it to make HTTP requests in your code. Here's an example of making a simple HTTP GET request using the request module:
+
+const request = require('request');
+
+request('https://api.example.com/users', (error, response, body) => {
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log(body);
+});
+
+In the above example, we require the request module using the require function. We then use the request function to make an HTTP GET request to the specified URL. The callback function is called when the response is received, and it takes three arguments: error, response, and body. If there is an error during the request, the error argument will be set to a non-null value. If the request is successful, the body argument will contain the response body.
+
+The request module provides many options that you can use to customize your HTTP requests. Here's an example of making an HTTP POST request with a JSON payload using the request module:
+
+const request = require('request');
+
+const options = {
+  url: 'https://api.example.com/users',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'John Doe', email: 'john.doe@example.com' })
+};
+
+request(options, (error, response, body) => {
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log(body);
+});
+
+In the above example, we specify the request options in an object and pass them as the first argument to the request function. The options include the URL, the HTTP method (in this case, POST), headers, and body. We also use the JSON.stringify() function to convert the payload to a JSON string.
+
+
 
